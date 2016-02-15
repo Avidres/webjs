@@ -1,0 +1,48 @@
+<div class="jumbotron">
+    <h1 class="text-center">Lista de Usuarios</h1>
+</div>
+<div ng-repeat="variableUsuario in usuarios">
+    <div class="col-sm-4" ng-init="variableUsuario.visible=false">
+        <h1>{{$index+1}} {{variableUsuario.nombre}}  </h1>
+        <p>{{variableUsuario.apellido}}</p>
+        <img ng-src="{{variableUsuario.foto}}" width="100px" height="100px" />
+        <br>
+        <button ng-click="variableUsuario.visible=!variableUsuario.visible" class="btn btn-default">Editarme!</button>
+        <a href="#/{{variableUsuario.id}}/pastel" class="btn btn-success">Pasteles</a>
+
+        <br>
+        <form class="animated bounceIn" ng-show="variableUsuario.visible" ng-submit="editarUsuario(variableUsuario, $index)">
+            <div class="form-group">
+                <label for="idnombre">Nombre</label>
+                <input ng-model="usuarios[$index].nombre" type="string" class="form-control" id="idnombre" placeholder="Actualiza tu Nombre">
+            </div>
+            <div class="form-group">
+                <label for="idnombre">Apellido</label>
+                <input ng-model="usuarios[$index].apellido" type="string" class="form-control" id="idnombre" placeholder="Actualiza tu Apellido">
+            </div>
+            <div class="form-group">
+                <label for="idnombre">Edad</label>
+                <input ng-model="usuarios[$index].edad" type="text" class="form-control" id="idnombre" placeholder="Actualiza tu edad">
+            </div>
+            <div class="form-group">
+                <label for="idnombre">Correo</label>
+                <input ng-model="usuarios[$index].correo" type="string" class="form-control" id="idnombre" placeholder="Actualiza tu correo">
+            </div>
+            <div class="form-group">
+                <label for="idnombre">Ciudad</label>
+                <input ng-model="usuarios[$index].ciudad" type="string" class="form-control" id="idnombre" placeholder="Actualiza tu ciudad">
+            </div>
+            <div class="form-group">
+                <label for="idnombre">Imagen</label>
+                <input ng-model="usuarios[$index].foto" type="string" class="form-control" id="idnombre" placeholder="Actualiza tu imagen">
+
+            </div>
+            <button type="submit" class="btn btn-primary" type="submit">Guardar</button>
+            <!--button ng-click="borrarEntrenador(variableEntrenador.id, $index)" class="btn btn-danger">Borrar</button-->
+        </form>
+        <br>
+
+    </div>
+
+
+</div>

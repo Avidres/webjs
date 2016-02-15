@@ -1,0 +1,59 @@
+<h1>Pastel</h1>
+<div class="row">
+    <div class="col-sm-4">
+        <h2>Agregar nuevo Pastel</h2>
+        <form ng-submit="agregarNuevoPastel()">
+
+            <div class="form-group">
+                <label for="idnombre">Nombre</label>
+                <input ng-model="nuevoPastel.nombre" type="string" class="form-control" id="idnombre" placeholder="Ingresa un Nombre">
+            </div>
+            <div class="form-group">
+                <label for="idnombre">Tipo</label>
+                <input ng-model="nuevoPastel.tipo" type="string" class="form-control" id="idnombre" placeholder="Ingresa un Tipo">
+            </div>
+            <div class="form-group">
+                <label for="idnombre">Foto</label>
+                <input ng-model="nuevoPastel.foto" type="integer" class="form-control" id="idnombre" placeholder="Ingresa una url">
+            </div>
+            <div class="form-group">
+                <label for="idnombre">Preparacion</label>
+                <input ng-model="nuevoPastel.preparacion" type="string" class="form-control" id="idnombre" placeholder="Ingresa preparacion">
+            </div>
+
+            <button class="btn btn-success" type="submit">Agregar Pastel</button>
+        </form>
+    </div>
+</div>
+
+
+
+<div ng-repeat="variablePastel in pasteles">
+    <div class="col-sm-4" ng-init="variablePastel.visible=false">
+        <h1>{{$index+1}} {{variablePastel.nombre}}  </h1>
+        <p>{{variablePastel.tipo}}</p>
+        <img ng-src="{{variablePastel.foto}}" width="100px" height="100px" />
+        <br>
+        <p>{{variablePastel.preparacion}}</p>
+        <button ng-click="variablePastel.visible=!variablePastel.visible" class="btn btn-default">Añadir Ingrediente</button>
+        <div ng-repeat="variableIngredientes in ingredientes">
+            <p>{{variableIngredientes.nombre}}</p>
+        </div>
+        <br>
+
+        <form class="animated bounceIn" ng-show="variablePastel.visible" ng-submit="agregarIngrediente()">
+            <div class="form-group">
+                <label for="idnombre">Nombre</label>
+                <input ng-model="nuevoIngrediente.nombre" type="string" class="form-control" id="idnombre" placeholder="Ingresa el ingrediente">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <!--button ng-click="borrarEntrenador(variableEntrenador.id, $index)" class="btn btn-danger">Borrar</button-->
+        </form>
+
+        <br>
+
+    </div>
+
+
+</div>
